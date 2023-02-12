@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "question": "Soru d1",
+        "correctAnswer": "Doğrı cevap benim",
+        "answer1": "yanlış cevaplardan biri",
+        "answer2": "yanlış cevaplardan biridss",
+        "answer3": "yanlış cevaplardan biriasdasdasd",
+        "category": "tarih"
+    },
+    {
+        "id": "2",
+        "question": "Soru 1asdwe",
+        "correctAnswer": "Doğrı cevap benim",
+        "answer1": "yanlış cevaplardan biri",
+        "answer2": "yanlış cevaplardan biridss",
+        "answer3": "yanlış cevaplardan biriasdasdasd",
+        "category": "mat"
+    },
+    {
+        "id": "3",
+        "question": "Soruwerer 1",
+        "correctAnswer": "Doğrı cevap benim",
+        "answer1": "yanlış cevaplardan biri",
+        "answer2": "yanlış cevaplardan biridss",
+        "answer3": "yanlış cevaplardan biriasdasdasd",
+        "category": "biy"
+    },
+    {
+        "id": "4",
+        "question": "Soru 1wewer",
+        "correctAnswer": "Doğrı cevap benim",
+        "answer1": "yanlış cevaplardan biri",
+        "answer2": "yanlış cevaplardan biridss",
+        "answer3": "yanlış cevaplardan biriasdasdasd",
+        "category": "rast"
+    }
+]
