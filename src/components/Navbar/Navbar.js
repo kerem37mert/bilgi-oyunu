@@ -1,11 +1,16 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./Navbar.style";
-
+import PlaySound from "../../apis/PlaySound";
 
 const Navbar = (props) => {
+
+    const buttonOnPressIn = () => {
+        PlaySound("home_click.wav");
+    }
+
     return(
         <View style={styles.container}>
-            <TouchableOpacity style={styles.startContainer} onPress={props.back}>
+            <TouchableOpacity style={styles.startContainer} onPress={props.back} onPressIn={buttonOnPressIn}>
                 <Text style={styles.startText}>Geri</Text>
             </TouchableOpacity>
             <View style={styles.centerContainer}>

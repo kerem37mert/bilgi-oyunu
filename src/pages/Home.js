@@ -1,15 +1,22 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import PlaySound from '../apis/PlaySound';
 
 const Home = (props) => {
 
   const playClick = () => {
     props.navigation.navigate("GameScreen");
+
   }
 
   const settingsClick = () => {
     props.navigation.navigate("SettingsScreen");
   }
+
+  const buttonOnPressIn = () => {
+    PlaySound("home_click.wav");
+  }
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -17,10 +24,10 @@ const Home = (props) => {
           <Image style={styles.logo} source={require("../assets/logo.png")} />
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={playClick}>
+          <TouchableOpacity style={styles.button} onPress={playClick} onPressIn={buttonOnPressIn}>
             <Text style={styles.buttonTxt}>Oyna</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={settingsClick}>
+          <TouchableOpacity style={styles.button} onPress={settingsClick} onPressIn={buttonOnPressIn}>
             <Text style={styles.buttonTxt}>Ayarlar</Text>
           </TouchableOpacity>
         </View>

@@ -5,6 +5,7 @@ import Question from "../components/Question";
 import Answer from "../components/Answer";
 import CheckModal from "../components/CheckModal";
 import GenerateQuestion from "../apis/GenerateQuestion";
+import PlaySound from "../apis/PlaySound";
 
 const Game = (props) => {
 
@@ -13,7 +14,6 @@ const Game = (props) => {
     }
 
     const [data, setData] = useState(GenerateQuestion());
-    const [disabled, setDisabled] = useState(false);
     const [point, setPoint] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
@@ -22,27 +22,30 @@ const Game = (props) => {
     const onPress = useCallback((answr) => {
         if(answr == data.correctAnswer)
         {
-            setPoint(point+1);
+            setPoint(point+10);
             setModalMessage("Doğru Cevap!");
             setModalBGColor("#00337C");
+            PlaySound("win_effect.wav");
         }
         else
         {
-            setPoint(point-1);
+            if(point > 0)
+            {
+                setPoint(point-10);
+            }
+
             setModalMessage("Yanlış Cevap!");
             setModalBGColor("#13005A");
+            PlaySound("lose_effect.wav");
         }
 
-        setDisabled(true);
         setModalVisible(true);
-    },[]);
+    },[point]);
 
     const nextQuestion = () => {
         setData(GenerateQuestion());
         setModalVisible(false);
-        setDisabled(false); 
     }
-    
 
     return(
         <SafeAreaView style={styles.container}>
@@ -59,7 +62,7 @@ const Game = (props) => {
                 </View>
             </View>
             <View style={styles.bottomContainer}>
-                <Answer data={data} onPress={onPress} disabled={disabled} />
+                <Answer data={data} onPress={onPress} />
             </View>
             <CheckModal
                 visible={modalVisible}

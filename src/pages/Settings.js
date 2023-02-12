@@ -1,12 +1,19 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 const Settings = () => {
     return(
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
 
         </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#00337C"
+    }
+});
 
 export default Settings;
