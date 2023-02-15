@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView, View, Modal, Pressable, Text, StyleSheet} from "react-native";
 import Navbar from "../components/Navbar";
 import Question from "../components/Question";
@@ -6,6 +6,7 @@ import Answer from "../components/Answer";
 import CheckModal from "../components/CheckModal";
 import GenerateQuestion from "../apis/GenerateQuestion";
 import PlaySound from "../apis/PlaySound";
+import PointUpdate from "../apis/PointUpdate";
 
 const Game = (props) => {
 
@@ -41,6 +42,11 @@ const Game = (props) => {
 
         setModalVisible(true);
     },[point]);
+    
+    useEffect(() => {
+        PointUpdate(point.toString());
+    }, [point])
+    
 
     const nextQuestion = () => {
         setData(GenerateQuestion());

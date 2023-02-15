@@ -3,6 +3,7 @@ import { SafeAreaView, View, Linking, StyleSheet } from "react-native";
 import SettingsNavbar from "../components/SettingsNavbar";
 import SettingItem from "../components/SettingItem";
 import SettingsBox from "../components/SettingsBox";
+import StatisticBox from "../components/StatisticBox";
 import SoundUpdate from "../apis/SoundUpdate";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -15,7 +16,8 @@ const Settings = (props) => {
           const value = await AsyncStorage.getItem('@soundImg')
           if(value !== null) {
             setImgName(value);
-          }
+          }  
+          
         }  catch (e){
           console.error(e);
         }
@@ -37,12 +39,17 @@ const Settings = (props) => {
         await SoundUpdate();
         await getSoundImg();
     }
+
+    const statisticClick = () => {
+        props.navigation.navigate("StatisticScreen");
+    }
     
     return(
         <SafeAreaView style={styles.container}>
-            <SettingsNavbar back={HomeBack} />
+            <SettingsNavbar title="Ayarlar" back={HomeBack} />
             <View style={styles.boxContainer}>
                 <SettingsBox image={imgName} onPress={changeSound} />
+                <StatisticBox onPress={statisticClick} />
             </View>
             <View style={styles.itemContainer}>
                 <SettingItem onPress={() => goLink("https://google.com")}>Soru Oluştur</SettingItem>
@@ -56,7 +63,7 @@ const Settings = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#00337C"
+        backgroundColor: "#00337C",
     },
     itemContainer: {
         margin: 20
@@ -65,7 +72,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 20,
         marginRight: 20,
-        alignItems: "center"
+        justifyContent: "space-evenly",
+        flexDirection: "row"
     }
 });
 

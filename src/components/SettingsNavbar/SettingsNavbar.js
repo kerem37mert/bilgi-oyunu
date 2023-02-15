@@ -16,7 +16,7 @@ const SettingsNavbar = (props) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.endContainer}>
-                <Text style={styles.endText}>Ayarlar</Text>
+                <Text style={styles.endText}>{props.title}</Text>
             </View>
         </View>
     );

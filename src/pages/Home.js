@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import PlaySound from '../apis/PlaySound';
 import DefaultSound from '../apis/DefaultSound';
+import DefaultPoint from '../apis/DefaultPoint';
 
 const Home = (props) => {
 
@@ -21,6 +22,7 @@ const Home = (props) => {
   //Sound default true
   useEffect(() => {
     DefaultSound();
+    DefaultPoint();  
   }, []);
   
 
