@@ -23,7 +23,7 @@ const Game = (props) => {
     const onPress = useCallback((answr) => {
         if(answr == data.correctAnswer)
         {
-            setPoint(point+10);
+            setPoint((prev) => prev + 10);
             setModalMessage("Doğru Cevap!");
             setModalBGColor("#00337C");
             PlaySound("win_effect.wav");
@@ -32,7 +32,7 @@ const Game = (props) => {
         {
             if(point > 0)
             {
-                setPoint(point-10);
+                setPoint((prev) => prev - 10);
             }
 
             setModalMessage("Yanlış Cevap!");
@@ -41,7 +41,7 @@ const Game = (props) => {
         }
 
         setModalVisible(true);
-    },[point]);
+    },[]);
     
     useEffect(() => {
         PointUpdate(point.toString());
