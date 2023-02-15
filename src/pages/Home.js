@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import PlaySound from '../apis/PlaySound';
+import DefaultSound from '../apis/DefaultSound';
 
 const Home = (props) => {
 
@@ -16,6 +17,11 @@ const Home = (props) => {
   const buttonOnPressIn = () => {
     PlaySound("home_click.wav");
   }
+  
+  //Sound default true
+  useEffect(() => {
+    DefaultSound();
+  }, []);
   
 
   return (

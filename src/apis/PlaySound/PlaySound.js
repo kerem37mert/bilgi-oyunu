@@ -1,65 +1,74 @@
 import React from 'react';
 import {} from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const playSound = (fileName) => {
-    // Import the react-native-sound module
-    var Sound = require('react-native-sound');
+const playSound = async (fileName) => {
 
-    // Enable playback in silence mode
-    Sound.setCategory('Playback');
+    const value = await AsyncStorage.getItem("@sound");
 
-    // Load the sound file 'whoosh.mp3' from the app bundle
-    // See notes below about preloading sounds within initialization code below.
-    var whoosh = new Sound(fileName, Sound.MAIN_BUNDLE, (error) => {
-    if (error) {
-        console.log('failed to load the sound', error);
-        return;
-    }
-    // loaded successfully
-    console.log('duration in seconds: ' + whoosh.getDuration() + 'number of channels: ' + whoosh.getNumberOfChannels());
+    if(value=="true"){
+        // Import the react-native-sound module
+        var Sound = require('react-native-sound');
 
-    // Play the sound with an onEnd callback
-    whoosh.play((success) => {
-        if (success) {
-        console.log('successfully finished playing');
-        } else {
-        console.log('playback failed due to audio decoding errors');
+        // Enable playback in silence mode
+        Sound.setCategory('Playback');
+
+        // Load the sound file 'whoosh.mp3' from the app bundle
+        // See notes below about preloading sounds within initialization code below.
+        var whoosh = new Sound(fileName, Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            console.log('failed to load the sound', error);
+            return;
         }
-    });
-    });
+        // loaded successfully
+        console.log('duration in seconds: ' + whoosh.getDuration() + 'number of channels: ' + whoosh.getNumberOfChannels());
 
-    // Reduce the volume by half
-    whoosh.setVolume(0.5);
+        // Play the sound with an onEnd callback
+        whoosh.play((success) => {
+            if (success) {
+            console.log('successfully finished playing');
+            } else {
+            console.log('playback failed due to audio decoding errors');
+            }
+        });
+        });
 
-    // Position the sound to the full right in a stereo field
-    whoosh.setPan(1);
+        // Reduce the volume by half
+        whoosh.setVolume(0.5);
 
-    // Loop indefinitely until stop() is called
-    whoosh.setNumberOfLoops(-1);
+        // Position the sound to the full right in a stereo field
+        whoosh.setPan(1);
 
-    // Get properties of the player instance
-    console.log('volume: ' + whoosh.getVolume());
-    console.log('pan: ' + whoosh.getPan());
-    console.log('loops: ' + whoosh.getNumberOfLoops());
+        // Loop indefinitely until stop() is called
+        whoosh.setNumberOfLoops(-1);
 
-    // Seek to a specific point in seconds
-    whoosh.setCurrentTime(2.5);
+        // Get properties of the player instance
+        console.log('volume: ' + whoosh.getVolume());
+        console.log('pan: ' + whoosh.getPan());
+        console.log('loops: ' + whoosh.getNumberOfLoops());
 
-    // Get the current playback point in seconds
-    whoosh.getCurrentTime((seconds) => console.log('at ' + seconds));
+        // Seek to a specific point in seconds
+        whoosh.setCurrentTime(2.5);
 
-    // Pause the sound
-    whoosh.pause();
+        // Get the current playback point in seconds
+        whoosh.getCurrentTime((seconds) => console.log('at ' + seconds));
 
-    // Stop the sound and rewind to the beginning
-    whoosh.stop(() => {
-    // Note: If you want to play a sound after stopping and rewinding it,
-    // it is important to call play() in a callback.
-    whoosh.play();
-    });
+        // Pause the sound
+        whoosh.pause();
 
-    // Release the audio player resource
-    whoosh.release();
-}
+        // Stop the sound and rewind to the beginning
+        whoosh.stop(() => {
+        // Note: If you want to play a sound after stopping and rewinding it,
+        // it is important to call play() in a callback.
+        whoosh.play();
+        });
+
+        // Release the audio player resource
+        whoosh.release();
+        }
+        else{
+            console.log("sound: false");
+        }
+    }
 
 export default playSound;
