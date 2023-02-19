@@ -17,7 +17,6 @@ const Settings = (props) => {
           if(value !== null) {
             setImgName(value);
           }  
-          
         }  catch (e){
           console.error(e);
         }

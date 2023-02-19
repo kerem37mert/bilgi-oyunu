@@ -95,7 +95,7 @@ android {
 
     namespace "com.bilgioyunu"
     defaultConfig {
-        applicationId "com.bilgioyunu"
+        applicationId "com.keremmert.bilgioyunu"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
