@@ -42,6 +42,10 @@ const Settings = (props) => {
     const statisticClick = () => {
         props.navigation.navigate("StatisticScreen");
     }
+
+    const goContributors = () => {
+        props.navigation.navigate("ContributorsScreen");
+    }
     
     return(
         <SafeAreaView style={styles.container}>
@@ -51,7 +55,8 @@ const Settings = (props) => {
                 <StatisticBox onPress={statisticClick} />
             </View>
             <View style={styles.itemContainer}>
-                <SettingItem onPress={() => goLink("https://google.com")}>Soru Oluştur</SettingItem>
+                <SettingItem onPress={() => goLink("https://bilgioyunu.keremmert.net")}>Soru Oluştur</SettingItem>
+                <SettingItem onPress={() => goContributors()}>Katkıda Bulunanlar</SettingItem>
                 <SettingItem onPress={() => goLink("https://google.com")}>Yardım</SettingItem>
                 <SettingItem onPress={() => goLink("https://google.com")}>Gizlilik Politikası</SettingItem>
             </View>
