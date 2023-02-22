@@ -57,8 +57,8 @@ const Settings = (props) => {
             <View style={styles.itemContainer}>
                 <SettingItem onPress={() => goLink("https://bilgioyunu.keremmert.net")}>Soru Oluştur</SettingItem>
                 <SettingItem onPress={() => goContributors()}>Katkıda Bulunanlar</SettingItem>
-                <SettingItem onPress={() => goLink("https://google.com")}>Yardım</SettingItem>
-                <SettingItem onPress={() => goLink("https://google.com")}>Gizlilik Politikası</SettingItem>
+                <SettingItem onPress={() => goLink("https://bilgioyunu.keremmert.net/help")}>Yardım</SettingItem>
+                <SettingItem onPress={() => goLink("https://bilgioyunu.keremmert.net/createQuestion")}>Gizlilik Politikası</SettingItem>
             </View>
         </SafeAreaView>
     );
